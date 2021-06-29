@@ -6,8 +6,8 @@ Parameters:
   NamingPrefix:
     Type: String
     Description: The naming prefix for resources created by this template including S3 buckets (minimum 5 characters)
-    AllowedPattern: '(?=^.{5,40}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)'
-    ConstraintDescription: minimum 5 characters; must contain only lowercase letters, numbers, periods (.), and dashes (-)
+    #AllowedPattern: '(?=^.{5,40}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)'
+    #ConstraintDescription: minimum 5 characters; must contain only lowercase letters, numbers, periods (.), and dashes (-)
     Default: 'frontend'
 
 Resources:
