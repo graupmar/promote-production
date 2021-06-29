@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  This is my test bucket which I need later
+
+Parameters:
+  NamingPrefix:
+    Type: String
+    Description: The naming prefix for resources created by this template including S3 buckets (minimum 5 characters)
+    AllowedPattern: '(?=^.{5,40}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)'
+    ConstraintDescription: minimum 5 characters; must contain only lowercase letters, numbers, periods (.), and dashes (-)
+    Default: 'frontend'
+
+Resources:
+
+  myS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      #BucketEncryption:
+      #    ServerSideEncryptionConfiguration:
+      #    - ServerSideEncryptionByDefault:
+      #        SSEAlgorithm: "AES256"
+      BucketName: !Sub '${NamingPrefix}-cicd-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      #VersioningConfiguration:
+      #  Status: Enabled
+
+Outputs:
+  S3BucketName:
+    Value: !Ref myS3Bucket
+    Description: S3 Bucket Name
