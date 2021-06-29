@@ -39,7 +39,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file cloudfront.yml \
-              --stack-name production-distro
+              --stack-name production-distro-2
               #--parameter-overrides PipelineID="${S3_BUCKET_NAME}" \
               #--tags project=udapeople &
 
