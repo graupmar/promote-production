@@ -8,24 +8,24 @@ Parameters:
     Description: The naming prefix for resources created by this template including S3 buckets (minimum 5 characters)
     #AllowedPattern: '(?=^.{5,40}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)'
     #ConstraintDescription: minimum 5 characters; must contain only lowercase letters, numbers, periods (.), and dashes (-)
-    Default: 'frontend'
+    Default: 'x3a8d2g-content'
 
 Resources:
 
   myS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: Private
+      AccessControl: Public
       #BucketEncryption:
       #    ServerSideEncryptionConfiguration:
       #    - ServerSideEncryptionByDefault:
       #        SSEAlgorithm: "AES256"
-      BucketName: !Sub '${NamingPrefix}-bla-${AWS::Region}'
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
+      BucketName: !Sub '${NamingPrefix}-${AWS::Region}'
+      #PublicAccessBlockConfiguration:
+      #  BlockPublicAcls: true
+      #  BlockPublicPolicy: true
+      #  IgnorePublicAcls: true
+      #  RestrictPublicBuckets: true
       #VersioningConfiguration:
       #  Status: Enabled
 
