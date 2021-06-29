@@ -11,8 +11,9 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file s3.yml \
-              --stack-name "${CIRCLE_WORKFLOW_ID:0:7}" \
-              --parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
+              --stack-name promtoprod-public-bucket
+              #--stack-name "${CIRCLE_WORKFLOW_ID:0:7}"
+              #--parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
 
 workflows:
   my_workflow:
