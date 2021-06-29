@@ -14,6 +14,20 @@ jobs:
               --stack-name promtoprod-public-bucket
               #--stack-name "${CIRCLE_WORKFLOW_ID:0:7}"
               #--parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
+  setup_s3_v2:
+    docker:
+      - image: amazon/aws-cli:latest
+    steps:
+      - checkout
+      - run:
+          name: public s3
+          command: |
+            aws cloudformation deploy \
+              --template-file bucket.yml \
+              --stack-name promtoprod-public-bucket-v2
+              #--stack-name "${CIRCLE_WORKFLOW_ID:0:7}"
+              #--parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
+      - run: aws s3 sync . s3://abc123xyz-content-eu-central-1 --delete
 
   setup_cloudfront:
     docker:
@@ -32,5 +46,5 @@ jobs:
 workflows:
   my_workflow:
     jobs:
-     # - setup_s3
-      - setup_cloudfront
+      - setup_s3_v2
+      #- setup_cloudfront
