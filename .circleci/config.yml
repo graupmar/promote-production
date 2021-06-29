@@ -15,7 +15,7 @@ jobs:
               #--stack-name "${CIRCLE_WORKFLOW_ID:0:7}"
               #--parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
 
- setup_cloudfront:
+  setup_cloudfront:
     docker:
       - image: amazon/aws-cli:latest
     steps:
