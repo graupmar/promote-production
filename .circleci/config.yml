@@ -11,7 +11,8 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file s3.yml \
-              --stack-name promote
+              --stack-name promote \
+              --region eu-central-1
 
 workflows:
   my_workflow:
