@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  setup_s3:
+    docker:
+      - image: amazon/aws-cli:latest
+    steps:
+      - checkout
+      - run:
+          name: Ensure backend infrastructure exist
+          command: |
+            aws cloudformation deploy \
+              --template-file s3.yml \
+              --stack-name promote
+
+workflows:
+  my_workflow:
+    jobs:
+      - setup_s3
