@@ -11,7 +11,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file s3.yml \
-              --stack-name "${CIRCLE_WORKFLOW_ID:0:7}" \
+              --stack-name "blabla" \
               --parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
 
 workflows:
