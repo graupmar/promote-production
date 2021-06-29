@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Ensure backend infrastructure exist
+          name: public s3
           command: |
             aws cloudformation deploy \
               --template-file s3.yml \
@@ -15,7 +15,22 @@ jobs:
               #--stack-name "${CIRCLE_WORKFLOW_ID:0:7}"
               #--parameter-overrides NamingPrefix="${CIRCLE_WORKFLOW_ID:0:7}"
 
+ setup_cloudfront:
+    docker:
+      - image: amazon/aws-cli:latest
+    steps:
+      - checkout
+      - run:
+          name: cloudfront
+          command: |
+            aws cloudformation deploy \
+              --template-file cloudfront.yml \
+              --stack-name production-distro
+              #--parameter-overrides PipelineID="${S3_BUCKET_NAME}" \
+              #--tags project=udapeople &
+
 workflows:
   my_workflow:
     jobs:
-      - setup_s3
+     # - setup_s3
+      - setup_cloudfront
