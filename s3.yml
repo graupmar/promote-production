@@ -20,7 +20,7 @@ Resources:
       #    ServerSideEncryptionConfiguration:
       #    - ServerSideEncryptionByDefault:
       #        SSEAlgorithm: "AES256"
-      BucketName: !Sub '${NamingPrefix}-cicd-${AWS::Region}'
+      BucketName: !Sub '${NamingPrefix}-${AWS::Region}'
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
