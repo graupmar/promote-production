@@ -15,7 +15,7 @@ Resources:
   myS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      AccessControl: Public
+      AccessControl: PublicReadWrite
       #BucketEncryption:
       #    ServerSideEncryptionConfiguration:
       #    - ServerSideEncryptionByDefault:
