@@ -47,5 +47,5 @@ workflows:
   my_workflow:
     jobs:
       - setup_s3_v2
-      - setup_cloudfront:
-          requires: setup_s3_v2
+      - setup_cloudfront
+          requires: [setup_s3_v2]
